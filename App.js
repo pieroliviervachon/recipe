@@ -17,8 +17,11 @@ import RecipesList from './src/screens/RecipesList';
 
 import {Provider} from 'react-redux';
 import {store} from './src/redux/store';
+import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+
+const queryClient = new QueryClient();
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -28,6 +31,7 @@ const App = () => {
   };
 
   return (
+    /*<QueryClientProvider store={store}>*/
     <Provider store={store}>
       <SafeAreaView style={backgroundStyle}>
         <StatusBar
@@ -37,6 +41,7 @@ const App = () => {
         <RecipesList />
       </SafeAreaView>
     </Provider>
+    /* </QueryClientProvider> */
   );
 };
 

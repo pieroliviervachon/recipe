@@ -1,7 +1,6 @@
-import {list, selectedRecipes} from './recipes';
+import recipes from './recipes';
 export const reducer = {
-  list,
-  selectedRecipes,
+  recipes,
 };
 
 export const preloadState = {

@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Image, Text, StyleSheet} from 'react-native';
 
 export default function RecipeTile({item}) {
+  console.log('ITEM', item);
   return (
     <View style={styles.container}>
       <Image source={{uri: item.image}} style={styles.image} />
@@ -29,5 +30,5 @@ const styles = StyleSheet.create({
   subContainer: {
     width: '70%',
     padding: 7,
-  }
+  },
 });

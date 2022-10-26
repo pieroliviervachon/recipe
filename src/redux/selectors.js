@@ -1,1 +1,4 @@
-export const getRecipesList = store => store.list;
+export const getRecipesList = store => {
+  console.log('STORE', store);
+  return store.recipes.list;
+};
