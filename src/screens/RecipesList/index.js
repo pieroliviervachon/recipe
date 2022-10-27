@@ -1,29 +1,33 @@
 import React, {useEffect} from 'react';
-import {FlatList, Text, View} from 'react-native';
+import {FlatList} from 'react-native';
 import {useFetchRecipes} from '../../api/recipes/useFetchRecipes';
 import {useSelector} from 'react-redux';
 import {getRecipesList} from '../../redux/selectors';
 import RecipeTile from './RecipeTile';
+import {
+  SPOONACULAR_API_KEY,
+  SPOONACULAR_URL_API,
+  SPOONACULAR_URL_COMPLEX_SEARCH_API,
+} from '@env';
 
-export default function RecipesList() {
-  const {getAllRecipes} = useFetchRecipes();
+export default function RecipesList({navigation}) {
+  //const {getAllRecipes} = useFetchRecipes();
 
   const allRecipes = useSelector(getRecipesList);
 
-  useEffect(() => {
+  /*useEffect(() => {
     getAllRecipes();
-  }, [getAllRecipes]);
+  }, []);*/
 
-  const renderItem = ({item}) => <RecipeTile item={item} />;
+  const renderItem = ({item}) => (
+    <RecipeTile item={item} navigation={navigation} />
+  );
 
   return (
-    <View>
-      <Text>Recipes List</Text>
-      <FlatList
-        data={allRecipes}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={renderItem}
-      />
-    </View>
+    <FlatList
+      data={allRecipes}
+      keyExtractor={(item, index) => index.toString()}
+      renderItem={renderItem}
+    />
   );
 }

@@ -1,15 +1,22 @@
 import React from 'react';
 import {View, Image, Text, StyleSheet} from 'react-native';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
-export default function RecipeTile({item}) {
+export default function RecipeTile({item, navigation}) {
   console.log('ITEM', item);
   return (
-    <View style={styles.container}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() => {
+        navigation.navigate('RecipeDetails', {
+          id: item.id,
+        });
+      }}>
       <Image source={{uri: item.image}} style={styles.image} />
       <View style={styles.subContainer}>
         <Text style={styles.title}>{item.title}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 

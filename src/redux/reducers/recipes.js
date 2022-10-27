@@ -1,26 +1,60 @@
 import {createAction, createReducer} from '@reduxjs/toolkit';
 
 const ADD_RECIPES = 'ADD_RECIPES';
-const DELETE_RECIPES = 'DELETE_RECIPES';
+const SELECTED_RECIPE = 'SELECTED_RECIPE';
 
 export const addRecipes = createAction(ADD_RECIPES);
-export const deleteRecipes = createAction(DELETE_RECIPES);
+export const selectedRecipe = createAction(SELECTED_RECIPE);
 
 const initialState = {
-  list: [],
-  selectedRecipes: {},
+  list: [
+    {
+      id: 716426,
+      title: 'Cauliflower, Brown Rice, and Vegetable Fried Rice',
+      image: 'https://spoonacular.com/recipeImages/716426-312x231.jpg',
+      imageType: 'jpg',
+    },
+    {
+      id: 715594,
+      title: 'Homemade Garlic and Basil French Fries',
+      image: 'https://spoonacular.com/recipeImages/715594-312x231.jpg',
+      imageType: 'jpg',
+    },
+    {
+      id: 715497,
+      title: 'Berry Banana Breakfast Smoothie',
+      image: 'https://spoonacular.com/recipeImages/715497-312x231.jpg',
+      imageType: 'jpg',
+    },
+    {
+      id: 644387,
+      title: 'Garlicky Kale',
+      image: 'https://spoonacular.com/recipeImages/644387-312x231.jpg',
+      imageType: 'jpg',
+    },
+    {
+      id: 716268,
+      title: 'African Chicken Peanut Stew',
+      image: 'https://spoonacular.com/recipeImages/716268-312x231.jpg',
+      imageType: 'jpg',
+    },
+  ],
+  selectedRecipe: {},
 };
 
 export default createReducer(initialState, builder => {
   builder
     .addCase(addRecipes, (state, action) => {
-      console.log(action);
       return {
         ...state,
         list: action.payload.data,
       };
     })
-    .addCase(deleteRecipes, (state, action) => {
-      return state.filter(recipe => recipe.id !== action.payload.id);
+    .addCase(selectedRecipe, (state, action) => {
+      console.log('ACTION', action);
+      return {
+        ...state,
+        selectedRecipe: action.payload.data,
+      };
     });
 });

@@ -5,5 +5,5 @@ export const reducer = {
 
 export const preloadState = {
   list: {},
-  selectedRecipes: [],
+  selectedRecipe: {},
 };
